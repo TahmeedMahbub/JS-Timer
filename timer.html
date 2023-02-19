@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Simple Timer</h2>
+
+<input type="number" name="duration" id="duration" placeholder="Time in Seconds"/>
+<button type="button" onclick="clicked()">Start Timer</button>
+
+<p id="demo"></p>
+
+<script>
+    
+    function clicked()
+    {
+    	var duration = document.getElementById('duration').value;
+		setInterval(dur, 1000);
+    
+        var m = Math.floor(duration / 60);
+        var s = duration % 60;
+        
+        function dur(){
+          	document.getElementById('demo').innerHTML = "";
+        	if(s > 0)
+            {
+        		document.getElementById('demo').innerHTML = m+":"+s;
+                s--;
+            }
+            else if(s == 0 && m > 0)
+            {
+        		document.getElementById('demo').innerHTML = m+":"+s;
+            	m--;
+                s= 59;
+            }
+            else if(s==0 && m == 0)
+            {
+            	document.getElementById('demo').innerHTML = "Time Up!";
+                alert("Time Up!");
+            }
+            else
+            {
+            	document.getElementById('demo').innerHTML = m+":"+s;
+            }
+        }
+    }
+</script>
+
+</body>
+</html> 
