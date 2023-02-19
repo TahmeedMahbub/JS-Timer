@@ -5,41 +5,46 @@
 <h2>Simple Timer</h2>
 
 <input type="number" name="duration" id="duration" placeholder="Time in Seconds"/>
-<button type="button" onclick="clicked()">Start Timer</button>
+<button type="button" id="btn" onclick="clicked()">Start Timer</button>
 
+<h3 id="title"></h3>
 <p id="demo"></p>
 
 <script>
     
     function clicked()
     {
-    	var duration = document.getElementById('duration').value;
+        document.getElementById("duration").style.display="none";
+        document.getElementById("btn").style.display="none";
+        var duration = document.getElementById('duration').value;
 		setInterval(dur, 1000);
     
         var m = Math.floor(duration / 60);
         var s = duration % 60;
         
+        document.getElementById('title').innerHTML = "Time Started for "+m+" Minutes "+s+" Seconds!";
+        s--;
+        
         function dur(){
-          	document.getElementById('demo').innerHTML = "";
-        	if(s > 0)
+            document.getElementById('demo').innerHTML = "";
+            if(s > 0)
             {
-        		document.getElementById('demo').innerHTML = m+":"+s;
+                document.getElementById('demo').innerHTML = m+":"+s;
                 s--;
             }
             else if(s == 0 && m > 0)
             {
-        		document.getElementById('demo').innerHTML = m+":"+s;
-            	m--;
+                document.getElementById('demo').innerHTML = m+":"+s;
+                m--;
                 s= 59;
             }
             else if(s==0 && m == 0)
             {
-            	document.getElementById('demo').innerHTML = "Time Up!";
-                alert("Time Up!");
+                document.getElementById('demo').innerHTML = "Time Up!";
             }
             else
             {
-            	document.getElementById('demo').innerHTML = m+":"+s;
+                document.getElementById('demo').innerHTML = m+":"+s;
             }
         }
     }
